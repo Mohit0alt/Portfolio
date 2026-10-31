@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohit Kumar — B.Tech CST Student & Aspiring Software Developer</title>
+
+  <!-- ================= SEO ================= -->
+  <meta name="description" content="Portfolio of Mohit Kumar — a B.Tech Computer Science & Technology student and aspiring software developer passionate about building modern websites and turning ideas into digital experiences." />
+  <meta name="author" content="Mohit Kumar" />
+  <meta name="theme-color" content="#F8FAFC" />
+
+  <!-- ============ Open Graph (social sharing) ============ -->
+  <meta property="og:title" content="Mohit Kumar — B.Tech CST Student & Aspiring Software Developer" />
+  <meta property="og:description" content="A premium student portfolio showcasing my skills, learning journey and project concepts." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:site_name" content="Mohit.dev" />
+
+  <!-- ============ Favicon (inline SVG, no extra file needed) ============ -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232563EB'/%3E%3Cstop offset='1' stop-color='%237C3AED'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3EMK%3C/text%3E%3C/svg%3E" />
+
+  <!-- ============ Typography (gracefully falls back to system fonts) ============ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       MOHIT.DEV — Premium Developer Portfolio
+       Single-file website: HTML5 + CSS3 + Vanilla JavaScript
+       ------------------------------------------------------------
+       HOW TO CUSTOMIZE:
+       • Colors, shadows and spacing live in :root below.
+       • Search this file for "EDIT:" comments — they mark every
+         placeholder you should personalize (college name,
+         project links, social profiles).
+       ============================================================ */
+
+    /* ---------- 1. Design tokens ---------- */
+    :root {
+      /* Colors */
+      --bg:            #F8FAFC;
+      --bg-soft:       #EFF6FF;
+      --surface:       #FFFFFF;
+      --primary:       #2563EB;
+      --primary-dark:  #1D4ED8;
+      --navy:          #172554;
+      --violet:        #7C3AED;
+      --text:          #0F172A;
+      --muted:         #64748B;
+      --border:        #E2E8F0;
+      --danger:        #DC2626;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, .05), 0 4px 14px rgba(15, 23, 42, .06);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, .09);
+      --shadow-lg: 0 20px 50px rgba(37, 99, 235, .15);
+
+      /* Shape & layout */
+      --radius:    16px;
+      --radius-lg: 22px;
+      --nav-height: 72px;
+      --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    /* ---------- 2. Reset & base ---------- */
+    *,
+    *::before,
+    *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-padding-top: calc(var(--nav-height) + 16px);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    ul[class], ol[class] { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    ::selection { background: rgba(37, 99, 235, .18); }
+
+    :focus-visible {
+      outline: 3px solid rgba(37, 99, 235, .45);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    /* Skip link — keyboard users can jump straight to content */
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      z-index: 300;
+      padding: .6rem 1.1rem;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 0 0 12px 12px;
+      transition: top .25s ease;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ---------- 3. Layout helpers ---------- */
+    .container {
+      width: min(1140px, 92%);
+      margin-inline: auto;
+    }
+
+    .section { padding: 6rem 0; position: relative; }
+
+    .section-alt {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+      border-block: 1px solid var(--border);
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: .35rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(37, 99, 235, .16);
+      color: var(--primary);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+
+    .section-head p {
+      margin-top: .8rem;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    /* ---------- 4. Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: .85rem 1.7rem;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      font: inherit;
+      font-size: .95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease,
+                  background-color .25s ease, border-color .25s ease, color .25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--violet));
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, .28);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(37, 99, 235, .38); }
+
+    .btn-secondary {
+      background: #fff;
+      border-color: var(--border);
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-secondary:hover { transform: translateY(-3px); border-color: var(--primary); color: var(--primary); }
+
+    .btn:active { transform: translateY(-1px) scale(.97); }
+
+    .btn-sm { padding: .55rem 1.25rem; font-size: .875rem; }
+    .btn-block { width: 100%; }
+
+    .btn[disabled] {
+      opacity: .55;
+      cursor: not-allowed;
+      box-shadow: none;
+      background: var(--bg-soft);
+      color: var(--muted);
+      border-color: var(--border);
+    }
+    .btn[disabled]:hover { transform: none; }
+
+    /* ---------- 5. Cards, pills & tags ---------- */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .card:hover {
+      border-color: rgba(37, 99, 235, .35);
+      box-shadow: var(--shadow-lg);
+    }
+    /* Tilted cards get their shadow from JS-driven transform */
+    .tilt:hover { box-shadow: 0 24px 60px rgba(37, 99, 235, .16); }
+
+    .pill {
+      display: inline-block;
+      padding: .22rem .65rem;
+      border-radius: 999px;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .pill-learning { background: #EDE9FE; color: #6D28D9; }
+    .pill-progress { background: #DBEAFE; color: #1D4ED8; }
+    .pill-goal     { background: #EDE9FE; color: #6D28D9; }
+
+    .tag {
+      padding: .3rem .75rem;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(37, 99, 235, .18);
+      color: var(--primary);
+      font-size: .72rem;
+      font-weight: 700;
+    }
+
+    /* ---------- 6. Decorative background ---------- */
+    .bg-decor {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .55;
+    }
+    .blob-1 { width: 420px; height: 420px; background: rgba(37, 99, 235, .16); top: -120px; right: -80px;  animation: drift 14s ease-in-out infinite; }
+    .blob-2 { width: 380px; height: 380px; background: rgba(124, 58, 237, .13); top: 42%; left: -150px;  animation: drift 18s ease-in-out infinite reverse; }
+    .blob-3 { width: 320px; height: 320px; background: rgba(14, 165, 233, .12); bottom: -90px; right: 12%; animation: drift 16s ease-in-out infinite; }
+
+    /* ---------- 7. Navigation bar ---------- */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      transition: background .3s ease, box-shadow .3s ease;
+    }
+    .site-header.scrolled,
+    .site-header.menu-open {
+      background: rgba(255, 255, 255, .86);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 4px 20px rgba(15, 23, 42, .07);
+      border-bottom: 1px solid rgba(226, 232, 240, .8);
+    }
+
+    .nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height);
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--text);
+    }
+    .logo span { color: var(--primary); }
+
+    .nav-links { display: flex; align-items: center; gap: .25rem; }
+
+    .nav-link {
+      display: block;
+      padding: .5rem .85rem;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 600;
+      transition: color .2s ease, background-color .2s ease;
+    }
+    .nav-link:hover,
+    .nav-link.active { color: var(--primary); background: var(--bg-soft); }
+
+    .nav-cta-item { margin-left: .7rem; }
+
+    /* Hamburger (mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--text);
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    .site-header.menu-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .site-header.menu-open .hamburger span:nth-child(2) { opacity: 0; }
+    .site-header.menu-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ---------- 8. Hero section ---------- */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: calc(var(--nav-height) + 56px) 0 110px;
+      overflow: hidden;
+    }
+    /* Subtle dot-grid behind the hero */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(37, 99, 235, .14) 1.2px, transparent 1.2px);
+      background-size: 26px 26px;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 72%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 72%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .5rem 1.15rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: var(--shadow-sm);
+      color: var(--primary);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+    }
+
+    .hero h1 {
+      margin: 1.2rem 0 .6rem;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 800;
+      color: var(--navy);
+    }
+    /* Gradient name where supported */
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      .hero h1 {
+        background: linear-gradient(120deg, var(--navy) 10%, var(--primary) 55%, var(--violet) 95%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .hero-rotator {
+      min-height: 1.6em;
+      font-size: clamp(1.25rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .rotator-word {
+      display: inline-block;
+      transition: opacity .28s ease, transform .28s ease;
+    }
+    .rotator-word.swap-out { opacity: 0; transform: translateY(-10px); }
+    .rotator-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.05em;
+      margin-left: 6px;
+      border-radius: 2px;
+      background: var(--violet);
+      vertical-align: text-bottom;
+      animation: blink 1.1s steps(2) infinite;
+    }
+
+    .hero-desc {
+      max-width: 540px;
+      margin-top: 1.1rem;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2.2rem;
+    }
+
+    /* --- Hero visual: code window, floating chips, badge --- */
+    .hero-visual { position: relative; }
+
+    .code-window {
+      position: relative;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .8);
+      border: 1px solid rgba(255, 255, 255, .95);
+      box-shadow: var(--shadow-lg);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      transform: rotate(1.5deg);
+    }
+    .code-bar {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .8rem 1.1rem;
+      background: rgba(15, 23, 42, .045);
+      border-bottom: 1px solid var(--border);
+    }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-red    { background: #F87171; }
+    .dot-yellow { background: #FBBF24; }
+    .dot-green  { background: #34D399; }
+    .code-file {
+      margin-left: .6rem;
+      font-family: var(--mono);
+      font-size: .74rem;
+      color: var(--muted);
+    }
+    .code-body {
+      padding: 1.15rem 1.25rem;
+      font-family: var(--mono);
+      font-size: .82rem;
+      line-height: 1.8;
+      color: #475569;
+      overflow-x: auto;
+    }
+    .ln { display: inline-block; width: 1.6em; color: #CBD5E1; user-select: none; }
+    .kw { color: var(--violet); font-weight: 600; }
+    .vr { color: var(--primary); font-weight: 600; }
+    .pr { color: #0F172A; }
+    .st { color: #059669; }
+    .bl { color: #EA580C; }
+    .fn { color: var(--primary); }
+
+    .hero-badge {
+      position: absolute;
+      top: -30px;
+      right: -8px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .6rem 1rem;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      animation: float 8s ease-in-out infinite;
+    }
+    .mk-avatar {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--violet));
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, .35);
+    }
+    .badge-text { display: flex; flex-direction: column; line-height: 1.3; }
+    .badge-text strong { font-size: .86rem; color: var(--text); }
+    .badge-text em { font-style: normal; font-size: .72rem; color: var(--muted); }
+
+    .chip {
+      position: absolute;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .5rem .95rem;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow-md);
+      font-size: .82rem;
+      font-weight: 700;
+      animation: float var(--float-dur, 6s) ease-in-out infinite;
+      animation-delay: var(--float-delay, 0s);
+    }
+    .chip-icon {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: .66rem;
+      font-weight: 800;
+    }
+    .ci-html { background: linear-gradient(135deg, #FB923C, #EA580C); }
+    .ci-css  { background: linear-gradient(135deg, #38BDF8, #0284C7); }
+    .ci-js   { background: linear-gradient(135deg, #FDE047, #EAB308); color: #78350F; }
+    .ci-c    { background: linear-gradient(135deg, #60A5FA, #2563EB); }
+    .ci-git  { background: linear-gradient(135deg, #FB7185, #E11D48); }
+
+    .chip-html { top: -20px; left: -22px; }
+    .chip-css  { top: 44%; left: -54px; --float-delay: .8s; --float-dur: 7s; }
+    .chip-js   { bottom: -18px; right: 6%; --float-delay: .4s; --float-dur: 6.5s; }
+    .chip-c    { top: -26px; right: 24%; --float-delay: 1.4s; --float-dur: 7.5s; }
+    .chip-git  { bottom: 24%; right: -48px; --float-delay: 1.2s; --float-dur: 8s; }
+
+    .shape-ring {
+      position: absolute;
+      top: -70px;
+      right: 18%;
+      width: 130px;
+      height: 130px;
+      border: 3px dashed rgba(124, 58, 237, .3);
+      border-radius: 50%;
+      animation: spin 34s linear infinite;
+    }
+
+    /* Scroll-down indicator */
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .45rem;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .mouse {
+      display: flex;
+      justify-content: center;
+      width: 26px;
+      height: 42px;
+      padding-top: 7px;
+      border: 2px solid #94A3B8;
+      border-radius: 14px;
+    }
+    .wheel {
+      width: 4px;
+      height: 8px;
+      border-radius: 2px;
+      background: var(--primary);
+      animation: wheel 1.7s ease infinite;
+    }
+
+    /* ---------- 9. Reveal & decorative animations ---------- */
+    .reveal { opacity: 0; }
+    .reveal.done { opacity: 1; }
+    .reveal.visible {
+      animation: rise .7s cubic-bezier(.22, .61, .36, 1) both;
+      animation-delay: var(--d, 0ms);
+    }
+
+    @keyframes rise   { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+    @keyframes float  { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    @keyframes spin   { to { transform: rotate(360deg); } }
+    @keyframes blink  { 50% { opacity: 0; } }
+    @keyframes drift  { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(28px, 18px); } }
+    @keyframes wheel  { 0% { opacity: 1; transform: translateY(0); } 70% { opacity: 0; transform: translateY(10px); } 100% { opacity: 0; } }
+
+    /* ---------- 10. About section ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-visual { position: relative; }
+
+    .about-card {
+      position: relative;
+      max-width: 360px;
+      margin-inline: auto;
+      padding: 2.4rem 2rem;
+      text-align: center;
+    }
+    .mk-avatar.mk-lg { width: 86px; height: 86px; margin: 0 auto 1.1rem; font-size: 1.55rem; }
+    .about-card h3 { font-size: 1.35rem; }
+    .about-card > p { color: var(--muted); font-size: .92rem; margin: .3rem 0 1.1rem; }
+
+    .student-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .45rem 1rem;
+      border-radius: 999px;
+      background: #EDE9FE;
+      color: #6D28D9;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    .float-dot {
+      position: absolute;
+      border-radius: 50%;
+    }
+    .fd-1 { width: 18px; height: 18px; background: var(--violet); opacity: .55; top: 6%;  left: 4%;  animation: float 6s ease-in-out infinite; }
+    .fd-2 { width: 12px; height: 12px; background: var(--primary); opacity: .5;  bottom: 12%; left: 10%; animation: float 7s ease-in-out infinite .8s; }
+    .fd-3 { width: 22px; height: 22px; background: #93C5FD;       opacity: .7;  top: 18%;  right: 6%; animation: float 8s ease-in-out infinite .4s; }
+
+    .about-lead { font-size: 1.05rem; color: var(--text); }
+    .about-lead strong { color: var(--primary); }
+
+    .about-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-top: 1.6rem;
+    }
+    .info-item {
+      padding: .85rem 1.05rem;
+      background: var(--bg-soft);
+      border: 1px solid rgba(37, 99, 235, .12);
+      border-radius: 14px;
+    }
+    .info-label {
+      display: block;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .info-value { font-weight: 700; font-size: .92rem; color: var(--navy); }
+    /* Editable placeholder styling */
+    .is-placeholder { color: var(--violet); font-style: italic; font-weight: 600; }
+
+    .value-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.1rem;
+      margin-top: 2rem;
+    }
+    .value-card { padding: 1.4rem 1.3rem; }
+    .value-icon {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(37, 99, 235, .14);
+      font-size: 1.35rem;
+    }
+    .value-card h3 { font-size: 1rem; margin: .8rem 0 .3rem; }
+    .value-card p { font-size: .87rem; color: var(--muted); }
+
+    /* ---------- 11. Skills section ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .skill-card { padding: 1.7rem 1.6rem; }
+    .skill-card-head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .skill-cat-icon {
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      color: #fff;
+      font-size: 1.3rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .sk-prog  { background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
+    .sk-web   { background: linear-gradient(135deg, var(--primary), var(--violet)); }
+    .sk-tools { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
+    .skill-card-head h3 { font-size: 1.12rem; }
+    .skill-card-head p { font-size: .8rem; color: var(--muted); }
+
+    .skill-list { display: flex; flex-direction: column; gap: .75rem; }
+    .skill {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      padding: .65rem .85rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .skill:hover {
+      transform: translateX(5px);
+      border-color: rgba(37, 99, 235, .4);
+      box-shadow: var(--shadow-sm);
+    }
+    .skill-icon {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 800;
+    }
+    .si-c    { background: linear-gradient(135deg, #60A5FA, #2563EB); font-size: 1rem; }
+    .si-cpp  { background: linear-gradient(135deg, #818CF8, #4338CA); font-size: .72rem; }
+    .si-html { background: linear-gradient(135deg, #FB923C, #EA580C); }
+    .si-css  { background: linear-gradient(135deg, #38BDF8, #0284C7); }
+    .si-js   { background: linear-gradient(135deg, #FDE047, #EAB308); color: #78350F; }
+    .si-git  { background: linear-gradient(135deg, #FB7185, #E11D48); }
+    .si-gh   { background: linear-gradient(135deg, #475569, #0F172A); }
+    .si-vs   { background: linear-gradient(135deg, #22D3EE, #0EA5E9); }
+
+    .skill-name { display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; }
+    .skill-name strong { font-size: .95rem; color: var(--text); }
+    .skill-name small { display: block; font-size: .75rem; color: var(--muted); }
+
+    .skills-note {
+      margin-top: 2.4rem;
+      text-align: center;
+      font-size: .88rem;
+      color: var(--muted);
+    }
+    .skills-note strong { color: var(--navy); }
+
+    /* ---------- 12. Projects section ---------- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.7rem;
+    }
+
+    .project-card { overflow: hidden; display: flex; flex-direction: column; }
+
+    .project-visual {
+      position: relative;
+      display: grid;
+      place-items: center;
+      height: 200px;
+    }
+    .pv-notes     { background: linear-gradient(135deg, #DBEAFE, #EDE9FE); }
+    .pv-arts      { background: linear-gradient(135deg, #E0E7FF, #DDD6FE); }
+    .pv-portfolio { background: linear-gradient(135deg, #DBEAFE, #C7D2FE); }
+
+    .status-pill {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      padding: .32rem .8rem;
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-sm);
+    }
+    .st-concept  { background: #EDE9FE; color: #6D28D9; }
+    .st-progress { background: #DBEAFE; color: #1D4ED8; }
+
+    .pv-scene { position: relative; }
+
+    /* Scene 1 — NoteNest: a notebook */
+    .nb {
+      position: relative;
+      width: 132px;
+      height: 152px;
+      padding: 20px 16px 14px 30px;
+      background: #fff;
+      border-left: 7px solid #F97316;
+      border-radius: 8px 16px 16px 8px;
+      box-shadow: var(--shadow-md);
+    }
+    .nb-title { height: 11px; width: 58%; margin-bottom: 16px; border-radius: 5px; background: #93C5FD; }
+    .nb-line  { height: 6px; margin-bottom: 11px; border-radius: 3px; background: #E2E8F0; }
+    .nb-line.short { width: 62%; }
+    .nb-back {
+      position: absolute;
+      top: 8px;
+      left: 24px;
+      width: 120px;
+      height: 140px;
+      background: rgba(255, 255, 255, .5);
+      border-radius: 12px;
+      transform: rotate(9deg);
+      z-index: -1;
+    }
+
+    /* Scene 2 — Kumar Arts: a printed banner */
+    .banner {
+      width: 180px;
+      padding: 18px 14px;
+      background: linear-gradient(135deg, var(--primary), var(--violet));
+      border-radius: 14px;
+      box-shadow: var(--shadow-lg);
+      color: #fff;
+      text-align: center;
+      transform: rotate(-2deg);
+    }
+    .banner strong { display: block; font-size: 1.02rem; font-weight: 800; letter-spacing: .16em; }
+    .banner small { display: block; margin-top: 4px; font-size: .6rem; letter-spacing: .32em; opacity: .85; }
+    .banner-star { position: absolute; top: -16px; right: -12px; font-size: 1.4rem; color: #FBBF24; filter: drop-shadow(0 3px 5px rgba(0,0,0,.15)); }
+
+    /* Scene 3 — Portfolio: a mini browser */
+    .mini-browser {
+      width: 190px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transform: rotate(2deg);
+    }
+    .mb-bar { display: flex; gap: 5px; padding: 9px 11px; background: #F1F5F9; }
+    .mb-bar i { width: 8px; height: 8px; border-radius: 50%; }
+    .mb-bar i:nth-child(1) { background: #F87171; }
+    .mb-bar i:nth-child(2) { background: #FBBF24; }
+    .mb-bar i:nth-child(3) { background: #34D399; }
+    .mb-body { padding: 12px; }
+    .mb-hero { height: 34px; margin-bottom: 10px; border-radius: 8px; background: linear-gradient(135deg, #60A5FA, #8B5CF6); }
+    .mb-line  { height: 6px; margin-bottom: 8px; border-radius: 3px; background: #E2E8F0; }
+    .mb-line.short { width: 55%; }
+    .mb-btn { width: 58px; height: 14px; margin-top: 5px; border-radius: 7px; background: var(--primary); }
+
+    .project-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 1.5rem;
+    }
+    .project-body h3 { font-size: 1.22rem; }
+    .project-body > p { flex: 1; margin: .5rem 0 1.1rem; font-size: .92rem; color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+    .project-links {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      margin-top: 1.4rem;
+    }
+    .link-hint { font-size: .78rem; font-style: italic; color: var(--muted); }
+
+    /* ---------- 13. Education section ---------- */
+    .edu-timeline {
+      position: relative;
+      max-width: 780px;
+      margin: 0 auto;
+      padding-left: 2.4rem;
+    }
+    .edu-timeline::before {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      border-radius: 3px;
+      background: linear-gradient(var(--primary), var(--violet));
+      opacity: .3;
+    }
+    .edu-card { position: relative; display: flex; gap: 1.4rem; padding: 1.8rem; }
+    .edu-card::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 2.4rem;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 0 5px rgba(37, 99, 235, .14);
+    }
+    .edu-icon {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--violet));
+      color: #fff;
+      font-size: 1.5rem;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, .3);
+    }
+    .edu-body h3 { font-size: 1.2rem; }
+    .edu-branch { margin: .25rem 0 .9rem; color: var(--primary); font-weight: 700; font-size: .95rem; }
+    .edu-meta li {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-bottom: .3rem;
+      font-size: .92rem;
+      color: var(--muted);
+    }
+    .edu-meta li span { min-width: 86px; font-weight: 700; color: var(--text); }
+
+    /* ---------- 14. Learning journey ---------- */
+    .journey {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .journey-step {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.35rem 1.5rem;
+    }
+    .step-num {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(37, 99, 235, .15);
+      color: var(--primary);
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+    .journey-body { flex: 1; }
+    .journey-body h3 { font-size: 1.05rem; }
+    .journey-body p { margin-top: .15rem; font-size: .88rem; color: var(--muted); }
+
+    /* ---------- 15. Contact section ---------- */
+    .contact-section { background: linear-gradient(180deg, #F8FAFC 55%, #EEF2FF 100%); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .info-card { display: flex; gap: 1.1rem; padding: 1.4rem; margin-bottom: 1.1rem; }
+    .info-icon {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(37, 99, 235, .15);
+      font-size: 1.3rem;
+    }
+    .info-card h3 { font-size: 1.02rem; margin-bottom: .15rem; }
+    .info-card p a { font-weight: 700; word-break: break-all; }
+    .info-card .btn { margin-top: .7rem; }
+
+    .contact-note {
+      padding: 1.15rem 1.3rem;
+      background: linear-gradient(135deg, rgba(37, 99, 235, .07), rgba(124, 58, 237, .07));
+      border: 1px dashed rgba(37, 99, 235, .4);
+      border-radius: var(--radius);
+      font-size: .9rem;
+      color: var(--navy);
+    }
+
+    .contact-form-wrap { padding: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .field { margin-bottom: 1.05rem; }
+    .field label { display: block; margin-bottom: .4rem; font-size: .87rem; font-weight: 700; }
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: .8rem 1rem;
+      font: inherit;
+      color: var(--text);
+      background: #F8FAFC;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .field textarea { min-height: 130px; resize: vertical; }
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      background: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
+    }
+    .field.invalid input,
+    .field.invalid textarea { border-color: var(--danger); }
+    .field-error { margin-top: .35rem; font-size: .8rem; font-weight: 600; color: var(--danger); }
+
+    .form-hint { margin-top: 1rem; text-align: center; font-size: .8rem; color: var(--muted); }
+
+    .form-success { text-align: center; padding: 2.4rem 1.6rem; }
+    .success-icon { font-size: 2.5rem; }
+    .form-success h3 { font-size: 1.3rem; margin: .8rem 0 .5rem; }
+    .form-success p { max-width: 430px; margin: 0 auto; font-size: .94rem; color: var(--muted); }
+    .success-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .9rem;
+      margin-top: 1.6rem;
+    }
+
+    /* ---------- 16. Footer ---------- */
+    .site-footer { background: #fff; border-top: 1px solid var(--border); }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      padding: 3.5rem 0 2.6rem;
+    }
+    .footer-brand p { max-width: 300px; margin: .8rem 0 .9rem; font-size: .92rem; color: var(--muted); }
+    .footer-mail { font-weight: 700; word-break: break-all; }
+    .footer-grid h3 {
+      margin-bottom: 1rem;
+      font-size: .82rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .footer-grid li { margin-bottom: .55rem; }
+    .footer-grid li a {
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+    .footer-grid li a:hover { color: var(--primary); }
+
+    .footer-bottom { background: var(--bg); border-top: 1px solid var(--border); }
+    .footer-bottom-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+      padding: 1.15rem 0;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    /* ---------- 17. Back-to-top button ---------- */
+    .to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 90;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--violet));
+      color: #fff;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px);
+      transition: opacity .3s ease, transform .3s ease, visibility .3s;
+    }
+    .to-top.show { opacity: 1; visibility: visible; transform: none; }
+    .to-top:hover { transform: translateY(-4px); }
+
+    /* ---------- 18. Responsive breakpoints ---------- */
+    @media (max-width: 1024px) {
+      .chip-css { left: -20px; }
+      .chip-git { right: -18px; }
+    }
+
+    @media (max-width: 960px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .3rem;
+        padding: 1rem 4%;
+        background: rgba(255, 255, 255, .98);
+        border-top: 1px solid var(--border);
+        border-radius: 0 0 18px 18px;
+        box-shadow: 0 18px 30px rgba(15, 23, 42, .1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity .25s ease, transform .25s ease, visibility .25s;
+      }
+      .site-header.menu-open .nav-links { opacity: 1; visibility: visible; transform: none; }
+      .nav-link { padding: .8rem 1rem; font-size: 1rem; }
+      .nav-cta-item { margin: .5rem 0 0; }
+      .nav-cta { width: 100%; }
+
+      .hero { padding-bottom: 96px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+      .hero-desc { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { width: 100%; max-width: 460px; margin: 0 auto; }
+      .scroll-indicator { display: none; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 4.2rem 0; }
+      .section-head { margin-bottom: 2.6rem; }
+
+      .hero-eyebrow { font-size: .7rem; }
+      .code-body { padding: 1rem; font-size: .72rem; }
+      .hero-badge { top: -20px; right: 0; padding: .5rem .75rem; }
+      .chip-css, .chip-git, .shape-ring { display: none; }
+      .chip-html { left: -8px; }
+      .chip-c { top: -18px; right: 2%; }
+      .chip-js { right: 0; }
+
+      .about-info { grid-template-columns: 1fr; }
+      .edu-card { flex-direction: column; }
+      .edu-card::before { display: none; }
+      .journey-step { flex-wrap: wrap; }
+      .journey-step .pill { margin-left: calc(54px + 1.2rem); }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 1.6rem 1.3rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+      .footer-bottom-inner { justify-content: center; text-align: center; }
+      .to-top { right: 16px; bottom: 16px; }
+    }
+
+    /* ---------- 19. Reduced motion ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; }
+      .rotator-cursor { animation: none; }
+    }
+  </style>
+  <noscript>
+    <style>.reveal { opacity: 1; }</style>
+  </noscript>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Decorative animated background (purely visual) -->
+  <div class="bg-decor" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+
+  <!-- ================= NAVIGATION ================= -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="logo" href="#home">Mohit<span>.dev</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a class="nav-link active" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#education">Education</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-cta-item">
+          <a class="btn btn-primary btn-sm nav-cta" href="#contact">Let's Connect</a>
+        </li>
+      </ul>
+
+      <button class="hamburger" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home" aria-label="Introduction">
+      <div class="container hero-inner">
+
+        <div class="hero-copy" data-stagger>
+          <p class="hero-eyebrow reveal">HELLO, I'M <span aria-hidden="true">👋</span></p>
+          <h1 class="reveal">Mohit Kumar</h1>
+
+          <p class="hero-rotator reveal">
+            <span class="rotator-word" id="rotatingTitle">B.Tech CST Student</span><span class="rotator-cursor" aria-hidden="true"></span>
+          </p>
+
+          <p class="hero-desc reveal">
+            I'm a Computer Science and Technology student passionate about building modern
+            websites, learning new technologies, and turning creative ideas into practical
+            digital experiences.
+          </p>
+
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#projects">Explore My Work</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <!-- Decorative developer illustration (hidden from screen readers) -->
+        <div class="hero-visual reveal" aria-hidden="true">
+          <span class="shape-ring"></span>
+
+          <div class="code-window">
+            <div class="code-bar">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="code-file">mohit.js</span>
+            </div>
+            <pre class="code-body"><code><span class="ln">1</span><span class="kw">const</span> <span class="vr">mohit</span> <span class="pr">=</span> {
+<span class="ln">2</span>  <span class="pr">role:</span> <span class="st">"B.Tech CST Student"</span>,
+<span class="ln">3</span>  <span class="pr">branch:</span> <span class="st">"Computer Science &amp; Tech"</span>,
+<span class="ln">4</span>  <span class="pr">learning:</span> [<span class="st">"C"</span>, <span class="st">"C++"</span>, <span class="st">"JavaScript"</span>],
+<span class="ln">5</span>  <span class="pr">building:</span> <span class="st">"web projects"</span>,
+<span class="ln">6</span>  <span class="pr">curious:</span> <span class="bl">true</span>,
+<span class="ln">7</span>};
+<span class="ln">8</span>
+<span class="ln">9</span><span class="kw">while</span> <span class="pr">(mohit.curious)</span> {
+<span class="ln">10</span>  <span class="pr">mohit.</span><span class="fn">learn</span><span class="pr">()</span>;
+<span class="ln">11</span>}</code></pre>
+          </div>
+
+          <div class="hero-badge">
+            <span class="mk-avatar">MK</span>
+            <span class="badge-text">
+              <strong>Mohit Kumar</strong>
+              <em>Developer in the making</em>
+            </span>
+          </div>
+
+          <span class="chip chip-html"><b class="chip-icon ci-html">&lt;/&gt;</b>HTML5</span>
+          <span class="chip chip-css"><b class="chip-icon ci-css">#</b>CSS3</span>
+          <span class="chip chip-c"><b class="chip-icon ci-c">C</b>C / C++</span>
+          <span class="chip chip-js"><b class="chip-icon ci-js">JS</b>JavaScript</span>
+          <span class="chip chip-git"><b class="chip-icon ci-git">Git</b>Git &amp; GitHub</span>
+        </div>
+
+      </div>
+
+      <a class="scroll-indicator" href="#about">
+        <span class="mouse" aria-hidden="true"><span class="wheel"></span></span>
+        Scroll
+      </a>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section section-alt" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Who I Am</span>
+          <h2 id="about-heading">About Me</h2>
+          <p>A quick introduction to who I am and what drives me.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Initials avatar card -->
+          <div class="about-visual reveal">
+            <span class="float-dot fd-1" aria-hidden="true"></span>
+            <span class="float-dot fd-2" aria-hidden="true"></span>
+            <span class="float-dot fd-3" aria-hidden="true"></span>
+            <div class="about-card card tilt">
+              <span class="mk-avatar mk-lg" aria-hidden="true">MK</span>
+              <h3>Mohit Kumar</h3>
+              <p>B.Tech CST Student</p>
+              <span class="student-badge">🎓 Student</span>
+            </div>
+          </div>
+
+          <div class="about-copy">
+            <p class="about-lead reveal">
+              I'm Mohit Kumar, a B.Tech student in <strong>Computer Science and Technology</strong>.
+              I'm developing my programming and web development skills while exploring how software
+              can solve real-world problems. I enjoy learning by building projects and improving my
+              understanding of modern development tools.
+            </p>
+
+            <div class="about-info reveal">
+              <div class="info-item">
+                <span class="info-label">Degree</span>
+                <span class="info-value">Bachelor of Technology (B.Tech)</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Branch</span>
+                <span class="info-value">Computer Science & Technology (CST)</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">College</span>
+                <!-- EDIT: Replace the placeholder below with your college name -->
+                <span class="info-value is-placeholder">Add your college name</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Status</span>
+                <span class="info-value">Student</span>
+              </div>
+            </div>
+
+            <div class="value-cards" data-stagger>
+              <article class="value-card card tilt reveal">
+                <span class="value-icon" aria-hidden="true">📚</span>
+                <h3>Learning</h3>
+                <p>Every day is a chance to pick up something new — from programming basics to modern web tools.</p>
+              </article>
+              <article class="value-card card tilt reveal">
+                <span class="value-icon" aria-hidden="true">🎨</span>
+                <h3>Creativity</h3>
+                <p>I enjoy turning simple ideas into clean, useful designs that feel good to use.</p>
+              </article>
+              <article class="value-card card tilt reveal">
+                <span class="value-icon" aria-hidden="true">🧩</span>
+                <h3>Problem-Solving</h3>
+                <p>I like breaking big problems into small steps and solving them one at a time.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="section" id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">My Toolkit</span>
+          <h2 id="skills-heading">Skills</h2>
+          <p>Technologies and tools I'm currently learning and working with.</p>
+        </div>
+
+        <div class="skills-grid" data-stagger>
+          <!-- Programming -->
+          <article class="skill-card card tilt reveal">
+            <div class="skill-card-head">
+              <span class="skill-cat-icon sk-prog" aria-hidden="true">💻</span>
+              <div>
+                <h3>Programming</h3>
+                <p>Languages I'm studying</p>
+              </div>
+            </div>
+            <ul class="skill-list">
+              <li class="skill">
+                <span class="skill-icon si-c" aria-hidden="true">C</span>
+                <div class="skill-name">
+                  <strong>C</strong>
+                  <small>Programming fundamentals</small>
+                </div>
+              </li>
+              <li class="skill">
+                <span class="skill-icon si-cpp" aria-hidden="true">C++</span>
+                <div class="skill-name">
+                  <strong>C++</strong>
+                  <span class="pill pill-learning">Learning</span>
+                  <small>Building on the basics</small>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Web Development -->
+          <article class="skill-card card tilt reveal">
+            <div class="skill-card-head">
+              <span class="skill-cat-icon sk-web" aria-hidden="true">🌐</span>
+              <div>
+                <h3>Web Development</h3>
+                <p>The frontend trio</p>
+              </div>
+            </div>
+            <ul class="skill-list">
+              <li class="skill">
+                <span class="skill-icon si-html" aria-hidden="true">&lt;/&gt;</span>
+                <div class="skill-name">
+                  <strong>HTML</strong>
+                  <small>Page structure</small>
+                </div>
+              </li>
+              <li class="skill">
+                <span class="skill-icon si-css" aria-hidden="true">#</span>
+                <div class="skill-name">
+                  <strong>CSS</strong>
+                  <small>Styling & layout</small>
+                </div>
+              </li>
+              <li class="skill">
+                <span class="skill-icon si-js" aria-hidden="true">JS</span>
+                <div class="skill-name">
+                  <strong>JavaScript</strong>
+                  <small>Interactivity</small>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Tools -->
+          <article class="skill-card card tilt reveal">
+            <div class="skill-card-head">
+              <span class="skill-cat-icon sk-tools" aria-hidden="true">🛠️</span>
+              <div>
+                <h3>Tools</h3>
+                <p>My daily workflow</p>
+              </div>
+            </div>
+            <ul class="skill-list">
+              <li class="skill">
+                <span class="skill-icon si-git" aria-hidden="true">Git</span>
+                <div class="skill-name">
+                  <strong>Git</strong>
+                  <small>Version control</small>
+                </div>
+              </li>
+              <li class="skill">
+                <span class="skill-icon si-gh" aria-hidden="true">GH</span>
+                <div class="skill-name">
+                  <strong>GitHub</strong>
+                  <small>Code hosting & collaboration</small>
+                </div>
+              </li>
+              <li class="skill">
+                <span class="skill-icon si-vs" aria-hidden="true">VS</span>
+                <div class="skill-name">
+                  <strong>VS Code</strong>
+                  <small>My code editor</small>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="skills-note reveal">
+          📌 <strong>A work in progress:</strong> this editable starter list reflects what I'm
+          currently learning — it's not a measure of mastery.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="section section-alt" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">My Work</span>
+          <h2 id="projects-heading">Featured Projects</h2>
+          <p>Concepts and builds I'm working on — live links will appear here as projects are completed.</p>
+        </div>
+
+        <div class="projects-grid" data-stagger>
+
+          <!-- Project 1: NoteNest -->
+          <article class="project-card card tilt reveal">
+            <div class="project-visual pv-notes">
+              <span class="status-pill st-concept">Concept</span>
+              <div class="pv-scene" aria-hidden="true">
+                <span class="nb-back"></span>
+                <div class="nb">
+                  <span class="nb-title"></span>
+                  <span class="nb-line"></span>
+                  <span class="nb-line"></span>
+                  <span class="nb-line short"></span>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>NoteNest</h3>
+              <p>A student-focused platform concept for organizing and sharing college notes.</p>
+              <ul class="tag-row">
+                <li class="tag">HTML</li>
+                <li class="tag">CSS</li>
+                <li class="tag">JavaScript</li>
+              </ul>
+              <div class="project-links">
+                <!-- EDIT: When the project is live, replace this button with:
+                     <a class="btn btn-primary btn-sm" href="https://your-live-url">View Project</a> -->
+                <button class="btn btn-sm" type="button" disabled
+                        title="Link will be added once the project is live">View Project</button>
+                <span class="link-hint">Link coming soon</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Kumar Arts Website -->
+          <article class="project-card card tilt reveal">
+            <div class="project-visual pv-arts">
+              <span class="status-pill st-progress">In Progress</span>
+              <div class="pv-scene" aria-hidden="true">
+                <div class="banner">
+                  <span class="banner-star">★</span>
+                  <strong>KUMAR ARTS</strong>
+                  <small>FLEX • PRINT • DESIGN</small>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Kumar Arts Website</h3>
+              <p>A website concept for a flex printing business, featuring services, contact details, and WhatsApp ordering.</p>
+              <ul class="tag-row">
+                <li class="tag">HTML</li>
+                <li class="tag">CSS</li>
+                <li class="tag">JavaScript</li>
+              </ul>
+              <div class="project-links">
+                <!-- EDIT: When the project is live, replace this button with:
+                     <a class="btn btn-primary btn-sm" href="https://your-live-url">View Project</a> -->
+                <button class="btn btn-sm" type="button" disabled
+                        title="Link will be added once the project is live">View Project</button>
+                <span class="link-hint">Link coming soon</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Personal Portfolio -->
+          <article class="project-card card tilt reveal">
+            <div class="project-visual pv-portfolio">
+              <span class="status-pill st-progress">In Progress</span>
+              <div class="pv-scene" aria-hidden="true">
+                <div class="mini-browser">
+                  <div class="mb-bar"><i></i><i></i><i></i></div>
+                  <div class="mb-body">
+                    <div class="mb-hero"></div>
+                    <div class="mb-line"></div>
+                    <div class="mb-line short"></div>
+                    <div class="mb-btn"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Personal Portfolio</h3>
+              <p>A responsive personal website showcasing my introduction, skills, projects, and contact information.</p>
+              <ul class="tag-row">
+                <li class="tag">HTML</li>
+                <li class="tag">CSS</li>
+                <li class="tag">JavaScript</li>
+              </ul>
+              <div class="project-links">
+                <!-- EDIT: When the project is live, replace this button with:
+                     <a class="btn btn-primary btn-sm" href="https://your-live-url">View Project</a> -->
+                <button class="btn btn-sm" type="button" disabled
+                        title="Link will be added once the project is live">View Project</button>
+                <span class="link-hint">Link coming soon</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATION ================= -->
+    <section class="section" id="education" aria-labelledby="education-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Academics</span>
+          <h2 id="education-heading">Education</h2>
+          <p>My current field of study.</p>
+        </div>
+
+        <div class="edu-timeline">
+          <article class="edu-card card tilt reveal">
+            <span class="edu-icon" aria-hidden="true">🎓</span>
+            <div class="edu-body">
+              <span class="pill pill-progress">Student</span>
+              <h3 style="margin-top:.5rem;">Bachelor of Technology (B.Tech)</h3>
+              <p class="edu-branch">Computer Science & Technology (CST)</p>
+              <ul class="edu-meta">
+                <li>
+                  <span>Institute:</span>
+                  <!-- EDIT: Replace the placeholder below with your college name -->
+                  <em class="is-placeholder">Add your college name</em>
+                </li>
+                <li>
+                  <span>Duration:</span>
+                  <!-- EDIT: Optionally add your study period, e.g. 2023 – 2027 -->
+                  <em class="is-placeholder">Add your study period</em>
+                </li>
+                <li>
+                  <span>Focus:</span>
+                  Programming fundamentals, web development & problem solving
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LEARNING JOURNEY ================= -->
+    <section class="section section-alt" id="journey" aria-labelledby="journey-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Growth</span>
+          <h2 id="journey-heading">Learning Journey</h2>
+          <p>Where I am and where I'm headed — these are goals in progress, not finished milestones.</p>
+        </div>
+
+        <ol class="journey" data-stagger>
+          <li class="journey-step card reveal">
+            <span class="step-num" aria-hidden="true">01</span>
+            <div class="journey-body">
+              <h3>Learning programming fundamentals</h3>
+              <p>Building a strong base in C and C++ — logic, data types and problem solving.</p>
+            </div>
+            <span class="pill pill-progress">Ongoing</span>
+          </li>
+          <li class="journey-step card reveal">
+            <span class="step-num" aria-hidden="true">02</span>
+            <div class="journey-body">
+              <h3>Building frontend development skills</h3>
+              <p>Learning HTML, CSS and JavaScript to create clean, responsive interfaces.</p>
+            </div>
+            <span class="pill pill-progress">Ongoing</span>
+          </li>
+          <li class="journey-step card reveal">
+            <span class="step-num" aria-hidden="true">03</span>
+            <div class="journey-body">
+              <h3>Creating practical web projects</h3>
+              <p>Turning ideas like NoteNest and Kumar Arts into real, working websites.</p>
+            </div>
+            <span class="pill pill-progress">Ongoing</span>
+          </li>
+          <li class="journey-step card reveal">
+            <span class="step-num" aria-hidden="true">04</span>
+            <div class="journey-body">
+              <h3>Exploring version control & development tools</h3>
+              <p>Getting comfortable with Git, GitHub and VS Code as part of my daily workflow.</p>
+            </div>
+            <span class="pill pill-progress">Ongoing</span>
+          </li>
+          <li class="journey-step card reveal">
+            <span class="step-num" aria-hidden="true">05</span>
+            <div class="journey-body">
+              <h3>Working toward becoming a software developer</h3>
+              <p>Keep learning, keep building — one project and one concept at a time.</p>
+            </div>
+            <span class="pill pill-goal">Goal</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Get In Touch</span>
+          <h2 id="contact-heading">Let's Build Something Great</h2>
+          <p>Have a project idea, collaboration opportunity, or suggestion? Feel free to contact me.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Contact details -->
+          <div class="contact-info" data-stagger>
+            <div class="info-card card reveal">
+              <span class="info-icon" aria-hidden="true">📞</span>
+              <div>
+                <h3>Phone</h3>
+                <p><a href="tel:9234218041">9234218041</a></p>
+                <a class="btn btn-primary btn-sm" href="tel:9234218041">Call Me</a>
+              </div>
+            </div>
+
+            <div class="info-card card reveal">
+              <span class="info-icon" aria-hidden="true">✉️</span>
+              <div>
+                <h3>Email</h3>
+                <p><a href="mailto:mohitkumar.ssm06@gmail.com">mohitkumar.ssm06@gmail.com</a></p>
+                <a class="btn btn-primary btn-sm" href="mailto:mohitkumar.ssm06@gmail.com">Email Me</a>
+              </div>
+            </div>
+
+            <p class="contact-note reveal">
+              💬 Prefer email? Use the form — it prepares a ready-to-send message in your
+              own email app. Nothing is stored or sent from this website.
+            </p>
+          </div>
+
+          <!-- Contact form -->
+          <div class="contact-form-wrap card reveal">
+            <form id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name"
+                         autocomplete="name" aria-describedby="nameError" />
+                  <p class="field-error" id="nameError" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="you@example.com"
+                         autocomplete="email" aria-describedby="emailError" />
+                  <p class="field-error" id="emailError" hidden></p>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="What's it about?"
+                       aria-describedby="subjectError" />
+                <p class="field-error" id="subjectError" hidden></p>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5"
+                          placeholder="Tell me about your idea or question…"
+                          aria-describedby="messageError"></textarea>
+                <p class="field-error" id="messageError" hidden></p>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                Send Message
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M22 2 11 13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 2 15 22l-4-9-9-4 20-7Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <p class="form-hint">
+                This form doesn't send data to a server — it opens your email app with your
+                message prefilled, ready to send.
+              </p>
+            </form>
+
+            <!-- Shown after successful validation -->
+            <div class="form-success" id="formSuccess" hidden tabindex="-1" role="status">
+              <span class="success-icon" aria-hidden="true">✅</span>
+              <h3>Your message is ready to send!</h3>
+              <p>
+                Your email app should open with everything filled in. Just press
+                <strong>send</strong> there — this website can't send the message for you.
+              </p>
+              <div class="success-actions">
+                <a class="btn btn-primary" id="mailtoLink" href="mailto:mohitkumar.ssm06@gmail.com">Open Email App</a>
+                <button type="button" class="btn btn-secondary" id="editMessageBtn">Edit Message</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#home">Mohit<span>.dev</span></a>
+        <p>Designed and built with curiosity by Mohit Kumar.</p>
+        <a class="footer-mail" href="mailto:mohitkumar.ssm06@gmail.com">mohitkumar.ssm06@gmail.com</a>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:mohitkumar.ssm06@gmail.com">mohitkumar.ssm06@gmail.com</a></li>
+          <li><a href="tel:9234218041">9234218041</a></li>
+          <!-- EDIT: Only show social links once you have real URLs. Uncomment and fill in:
+          <li><a href="https://github.com/your-username" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/your-handle" rel="noopener">LinkedIn</a></li>
+          -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© <span id="year">2026</span> Mohit Kumar. All rights reserved.</p>
+        <p>Made with 💙 and lots of curiosity.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="m18 15-6-6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script>
+    'use strict';
+
+    /* ============================================================
+       MOHIT.DEV — site interactions
+       1. Copyright year          5. Scroll reveal
+       2. Sticky header           6. Active nav highlighting
+       3. Mobile menu             7. 3D card tilt
+       4. Rotating hero title     8. Back to top
+                                  9. Contact form → mailto
+       ============================================================ */
+
+    // ---------- Helpers ----------
+    const $  = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ---------- 1. Copyright year ----------
+    const yearEl = $('#year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // ---------- 2. Sticky header + back-to-top visibility ----------
+    const header = $('#siteHeader');
+    const toTop  = $('#toTop');
+
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 24);
+      toTop.classList.toggle('show', window.scrollY > 480);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    // ---------- 3. Mobile menu ----------
+    const menuToggle = $('#menuToggle');
+
+    const setMenu = (open) => {
+      header.classList.toggle('menu-open', open);
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+
+    menuToggle.addEventListener('click', () => {
+      setMenu(!header.classList.contains('menu-open'));
+    });
+
+    // Close the menu when a link inside it is used
+    $$('.nav-link, .nav-cta').forEach((link) => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+
+    // Close on Escape or when clicking outside the header
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && header.classList.contains('menu-open')) {
+        setMenu(false);
+        menuToggle.focus();
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (header.classList.contains('menu-open') && !header.contains(e.target)) {
+        setMenu(false);
+      }
+    });
+
+    // ---------- 4. Rotating hero title ----------
+    const roles = [
+      'B.Tech CST Student',
+      'Aspiring Software Developer',
+      'Frontend Development Enthusiast'
+    ];
+    const rotator = $('#rotatingTitle');
+    let roleIndex = 0;
+
+    if (rotator && !reduceMotion) {
+      setInterval(() => {
+        rotator.classList.add('swap-out');
+        setTimeout(() => {
+          roleIndex = (roleIndex + 1) % roles.length;
+          rotator.textContent = roles[roleIndex];
+          rotator.classList.remove('swap-out');
+        }, 280);
+      }, 3200);
+    }
+
+    // ---------- 5. Scroll reveal (IntersectionObserver) ----------
+    // Staggered delay for children of [data-stagger] containers
+    $$('[data-stagger]').forEach((group) => {
+      $$('.reveal', group).forEach((el, i) => {
+        el.style.setProperty('--d', `${i * 90}ms`);
+      });
+    });
+
+    const revealEls = $$('.reveal');
+
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          el.classList.add('visible');
+
+          // Once the entrance animation finishes, hand control back to
+          // normal CSS (so hover transforms / tilt still work).
+          el.addEventListener('animationend', (e) => {
+            if (e.target !== el) return;
+            el.classList.add('done');
+            el.classList.remove('visible');
+          });
+          io.unobserve(el);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      revealEls.forEach((el) => io.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('visible'));
+    }
+
+    // ---------- 6. Active nav link highlighting ----------
+    const navLinks = $$('.nav-link');
+    const sections = $$('main section[id]');
+
+    if ('IntersectionObserver' in window) {
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+      sections.forEach((section) => spy.observe(section));
+    }
+
+    // ---------- 7. 3D card tilt (pointer devices only) ----------
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (finePointer && !reduceMotion) {
+      $$('.tilt').forEach((card) => {
+        const maxTilt = parseFloat(card.dataset.tiltMax || '6');
+
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width  - 0.5;
+          const y = (e.clientY - rect.top)  / rect.height - 0.5;
+          card.style.transform =
+            `perspective(900px) rotateX(${(-y * maxTilt).toFixed(2)}deg)` +
+            ` rotateY(${(x * maxTilt).toFixed(2)}deg) translateY(-4px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    }
+
+    // ---------- 8 & 9. Contact form validation → prefilled mailto ----------
+    const form       = $('#contactForm');
+    const successBox = $('#formSuccess');
+    const mailtoLink = $('#mailtoLink');
+    const EMAIL_RE   = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Each validator returns true, or an error message to display.
+    const validators = {
+      name:    (v) => v.trim().length >= 2  || 'Please enter your name (at least 2 characters).',
+      email:   (v) => EMAIL_RE.test(v.trim()) || 'Please enter a valid email address.',
+      subject: (v) => v.trim().length >= 3  || 'Please add a short subject.',
+      message: (v) => v.trim().length >= 10 || 'Your message should be at least 10 characters long.'
+    };
+
+    const setError = (fieldName, message) => {
+      const input = form.elements[fieldName];
+      const error = $(`#${fieldName}Error`);
+      input.closest('.field').classList.toggle('invalid', Boolean(message));
+      input.setAttribute('aria-invalid', message ? 'true' : 'false');
+      if (message) {
+        error.textContent = message;
+        error.hidden = false;
+      } else {
+        error.hidden = true;
+      }
+    };
+
+    // Clear an error as soon as the user starts fixing it
+    Object.keys(validators).forEach((fieldName) => {
+      form.elements[fieldName].addEventListener('input', () => setError(fieldName, ''));
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // No backend — we never actually submit anywhere
+
+      // Validate every field; focus the first problem one
+      let firstInvalid = null;
+      Object.entries(validators).forEach(([fieldName, check]) => {
+        const result = check(form.elements[fieldName].value);
+        const message = result === true ? '' : result;
+        setError(fieldName, message);
+        if (message && !firstInvalid) firstInvalid = form.elements[fieldName];
+      });
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      // Build a prefilled mailto: link for the visitor's own email app
+      const name    = form.elements.name.value.trim();
+      const email   = form.elements.email.value.trim();
+      const subject = form.elements.subject.value.trim();
+      const message = form.elements.message.value.trim();
+
+      const body =
+        `Hi Mohit,\n\n${message}\n\n— ${name}\nReply to: ${email}`;
+      mailtoLink.href =
+        `mailto:mohitkumar.ssm06@gmail.com` +
+        `?subject=${encodeURIComponent('[Portfolio] ' + subject)}` +
+        `&body=${encodeURIComponent(body)}`;
+
+      form.hidden = true;
+      successBox.hidden = false;
+      successBox.focus();
+    });
+
+    // Go back to editing the message
+    $('#editMessageBtn').addEventListener('click', () => {
+      successBox.hidden = true;
+      form.hidden = false;
+      form.elements.name.focus();
+    });
+  </script>
+
+</body>
+</html>
